@@ -9,6 +9,8 @@ import (
 
 const DOCTYPE = "<!doctype html>"
 
+// CleanHTML takes a given html string and transforms it
+// to a string consisting only of its title and content
 func CleanHTML(html string) string {
 	space := regexp.MustCompile(`\s+`)
 	lower := strings.ToLower(html)
