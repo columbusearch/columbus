@@ -3,8 +3,6 @@ package html
 import (
 	"regexp"
 	"strings"
-
-	strip "github.com/grokify/html-strip-tags-go"
 )
 
 const DOCTYPE = "<!doctype html>"
@@ -15,9 +13,14 @@ func CleanHTML(html string) string {
 	space := regexp.MustCompile(`\s+`)
 	lower := strings.ToLower(html)
 	noDoc := strings.ReplaceAll(lower, DOCTYPE, "")
-	noTags := strip.StripTags(noDoc)
+	noTags := removeTags(noDoc)
 	noSpaces := space.ReplaceAllString(noTags, " ")
 	noSpaces = strings.ReplaceAll(noSpaces, "\n\t", "")
 	cleaned := strings.TrimSpace(noSpaces)
 	return cleaned
+}
+
+func removeTags(s string) string {
+	re := regexp.MustCompile(`(?s)<script.*?>.*?</script>|<style.*?>.*?</style>|<[^>]*>`)
+	return re.ReplaceAllString(s, "")
 }
