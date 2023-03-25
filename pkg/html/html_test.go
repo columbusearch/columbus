@@ -15,3 +15,11 @@ func TestCleanHTML(t *testing.T) {
 		t.Errorf("got %q want %q", got, want)
 	}
 }
+
+func BenchmarkCleanHTML(b *testing.B) {
+	content, _ := os.ReadFile("../testdata/dirty-page.html")
+
+	for i := 0; i < b.N; i++ {
+		CleanHTML(string(content))
+	}
+}
