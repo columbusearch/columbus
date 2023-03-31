@@ -20,6 +20,8 @@ func CleanHTML(html string) string {
 	return cleaned
 }
 
+// removeTags removes all tags from a given string
+// and returns the string without tags
 func removeTags(s string) string {
 	re := regexp.MustCompile(`(?s)<script.*?>.*?</script>|<style.*?>.*?</style>|<[^>]*>`)
 	return re.ReplaceAllString(s, "")
