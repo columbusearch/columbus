@@ -49,6 +49,7 @@ func NewMetricsServer() *MetricsServer {
 	return &MetricsServer{
 		handler:             promhttp.HandlerFor(registry, promhttp.HandlerOpts{}),
 		queryCount:          queryCount,
+		errorCount:          errorCount,
 		responseStatusCount: responseStatusCount,
 		responseTime:        responseTime,
 	}
