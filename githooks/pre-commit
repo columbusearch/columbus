@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Run go fmt on all go files
+go fmt ./...
+
+# Run go vet on all go files
+go vet ./...
+
+# Run go test on all go files
+go test ./...
