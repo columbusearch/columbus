@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 
 	"github.com/itamadev/columbus/search/metrics"
 	log "github.com/sirupsen/logrus"
@@ -17,8 +18,7 @@ type SearchService struct {
 }
 
 type Result struct {
-	Content string
-	Url     string
+	Url url.URL
 }
 
 // Search requests from typesense a query and sends back an arrray of Results of the first n results
@@ -26,6 +26,7 @@ func (s *SearchService) Search(query string, n int) ([]Result, error) {
 	searchResult, err := s.client.Collection("columbus").Documents().Search(
 		&api.SearchCollectionParams{
 			Q:       query,
+			QueryBy: "url,content",
 			PerPage: &n,
 		},
 	)
@@ -38,11 +39,24 @@ func (s *SearchService) Search(query string, n int) ([]Result, error) {
 	results := make([]Result, 0)
 	for _, hit := range *searchResult.Hits {
 		document := *hit.Document
+		prasedURL, err := url.Parse(document["url"].(string))
+
+		if err != nil {
+			s.metricsServer.IncErrorCount(query)
+			s.log.Error(err)
+		}
+
 		results = append(results, Result{
-			Content: document["content"].(string),
-			Url:     document["url"].(string),
+			Url: *prasedURL,
 		})
 	}
+
+	if len(results) == 0 {
+		s.log.Infof("No results for query \"%s\"", query)
+	} else {
+		s.log.Tracef("Found %d results for query \"%s\"", len(results), query)
+	}
+
 	return results, nil
 }
 
