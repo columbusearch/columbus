@@ -17,6 +17,7 @@ type MetricsServer struct {
 	responseTime        *prometheus.HistogramVec
 }
 
+// NewMetricsServer creates a new MetricsServer
 func NewMetricsServer() *MetricsServer {
 	registry := prometheus.NewRegistry()
 	registry.MustRegister(collectors.NewGoCollector())
@@ -79,6 +80,7 @@ func (m *MetricsServer) ObserveResponseTime(query string, duration float64) {
 	m.responseTime.WithLabelValues(query).Observe(duration)
 }
 
+// PrometheusMetricsMiddleware is a middleware that records metrics for the given query
 func (m *MetricsServer) PrometheusMetricsMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		query := r.URL.Query().Get("query")

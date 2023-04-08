@@ -66,6 +66,7 @@ func (s *SearchService) HandleHealth(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Service is healthy")
 }
 
+// NewSearchService creates a new SearchService
 func NewSearchService(typesenseUrl string, typesenseKey string, metricsServer *metrics.MetricsServer) *SearchService {
 	client := typesense.NewClient(
 		typesense.WithAPIKey(typesenseKey),
