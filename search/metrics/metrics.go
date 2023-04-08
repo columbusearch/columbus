@@ -21,19 +21,19 @@ func NewMetricsServer() *MetricsServer {
 	registry.MustRegister(collectors.NewProcessCollector(collectors.ProcessCollectorOpts{}))
 
 	queryCount := prometheus.NewCounterVec(prometheus.CounterOpts{
-		Name: "search_query_count",
+		Name: "columbus_search_query_count",
 		Help: "Number of queries received",
 	}, []string{"query"})
 	registry.MustRegister(queryCount)
 
 	errorCount := prometheus.NewCounterVec(prometheus.CounterOpts{
-		Name: "search_error_count",
+		Name: "columbus_search_error_count",
 		Help: "Number of errors returned",
 	}, []string{"query"})
 	registry.MustRegister(errorCount)
 
 	responseTime := prometheus.NewHistogramVec(prometheus.HistogramOpts{
-		Name: "search_response_time",
+		Name: "columbus_search_response_time",
 		Help: "Time taken to respond to a query",
 	}, []string{"query"})
 	registry.MustRegister(responseTime)
