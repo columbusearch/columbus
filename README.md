@@ -1,4 +1,4 @@
-<img align= right width=200px src=docs/assets/logogo.svg/>
+<img align= right width=200px src=docs/assets/icongo.svg/>
 
 # Columbus
 
