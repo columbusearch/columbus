@@ -19,7 +19,7 @@ const Home: React.FC = () => {
     <div className="min-h-screen bg-gray-100">
       <div style={{ textAlign: "center", paddingTop: "2%" }}>
         <div style={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
-          <Image alt="Logo" src="/icon-go.svg" width={150} height={150} style={{ marginRight: "1%" }} />
+          <Image alt="Logo" src="/icongo.svg" width={150} height={150} style={{ marginRight: "1%" }} />
           <h1 className="text-9xl font-bold text-gray-900">Columbus</h1>
         </div>
       </div>
