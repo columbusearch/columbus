@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -16,7 +15,7 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="bg-gradient-to-br to-white from-golangblue h-screen" >
       <div style={{ textAlign: "center", paddingTop: "2%" }}>
         <div style={{ justifyContent: "center", alignItems: "center", display: "flex" }}>
           <Image alt="Logo" src="/icongo.svg" width={150} height={150} style={{ marginRight: "1%" }} />
@@ -38,7 +37,7 @@ const Home: React.FC = () => {
         </form>
         <div className="mt-8">
           {results.map((result: any) => (
-            <div key={result.id}>
+            <div style={{paddingTop: "2%" }} key={result.id}>
               <Link href={result.title}>
                 <div className="result p-4 bg-white shadow rounded-lg hover:shadow-lg cursor-pointer transition duration-300 ease-in-out">
                   <h2 className="text-lg font-medium text-gray-900">{result.title}</h2>
