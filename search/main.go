@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/itamadev/columbus/search/metrics"
+	"github.com/columbusearch/columbus/search/metrics"
 )
 
 func main() {

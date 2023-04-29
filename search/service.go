@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/itamadev/columbus/search/metrics"
+	"github.com/columbusearch/columbus/search/metrics"
 	log "github.com/sirupsen/logrus"
 	"github.com/typesense/typesense-go/typesense"
 	"github.com/typesense/typesense-go/typesense/api"
