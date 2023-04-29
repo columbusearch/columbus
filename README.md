@@ -2,7 +2,7 @@
 
 # Columbus
 
-![Go build](https://github.com/itamadev/columbus/actions/workflows/go.yml/badge.svg)
+![Go build](https://github.com/columbusearch/columbus/actions/workflows/go.yml/badge.svg)
 
 Columbus is a cloud-based search engine that makes searching your hosted cloud apps on your Kubernetes instances feel.
 
