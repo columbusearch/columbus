@@ -1,4 +1,4 @@
-module github.com/itamadev/columbus
+module github.com/columbusearch/columbus
 
 go 1.20
 
