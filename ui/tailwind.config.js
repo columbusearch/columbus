@@ -10,6 +10,7 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       golangblue: "#74cedd",
+      white: "#ffffff",
     },
     extend: {
       backgroundImage: {
